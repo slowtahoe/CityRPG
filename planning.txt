@@ -9,3 +9,5 @@ New Feature Ideas
 
 Fixes
 	- possible ghost brick glitch? ghost brick disappears. have to ctrl k.
+	- Drugs insta grow and harvest. one hit harvest.
+	- drug sell only has opium and mary jane
