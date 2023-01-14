@@ -241,6 +241,12 @@ if(!isObject(CityRPGJackhammerItem))
 	};
 }
 
+function CityRPGJackhammerImage::onFire(%this, %obj, %slot)
+{
+	%obj.playThread(2, plant);
+	Parent::onFire(%this, %obj, %slot);
+}
+
 function CityRPGJackhammerImage::onMount(%this,%obj,%slot)
 {
 	Parent::onMount(%this,%obj,%slot);	
