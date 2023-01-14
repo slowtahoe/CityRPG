@@ -5,12 +5,6 @@ if(!isObject(CityRPGJackhammerItem))
 
 	datablock AudioProfile(jackhammerRevUSound)
 	{
-	filename    = "Add-Ons/GameMode_MetropolisRP/sounds/spinup.wav";
-	description = AudioClose3d;
-	preload = true;
-	};
-	datablock AudioProfile(jackhammerRevUSound)
-	{
 	filename    = $City::DataPath @ "sounds/spinup.wav";
 	description = AudioClose3d;
 	preload = true;
@@ -129,7 +123,7 @@ if(!isObject(CityRPGJackhammerItem))
 
 		//gui stuff
 		uiName = "Jackhammer";
-		iconName = $City::DataPath @ "ui/ItemIcons/jackhammer";
+		iconName = $City::DataPath @ "ui/CI/jackhammer";
 
 		// Dynamic properties defined by the scripts
 		image = CityRPGJackhammerImage;

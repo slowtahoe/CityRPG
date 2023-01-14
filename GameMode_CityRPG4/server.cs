@@ -222,6 +222,8 @@ exec($City::ScriptPath @ "items/tools/pickaxe.cs");
 exec($City::ScriptPath @ "items/tools/axe.cs");
 exec($City::ScriptPath @ "items/tools/knife.cs");
 exec($City::ScriptPath @ "items/tools/jackhammer.cs");
+exec($City::ScriptPath @ "items/tools/chainsaw.cs");
+
 
 // Weapons
 exec($City::ScriptPath @ "items/weapons/taser.cs");

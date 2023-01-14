@@ -273,6 +273,7 @@ function City_Init_Items()
 	City_RegisterItem(CityRPGPickaxeItem, 25, 1, 0);
 	City_RegisterItem(CityRPGJackhammerItem, 25, 1, 0);
 	City_RegisterItem(CityRPGLumberjackItem, 25, 1, 0);
+	City_RegisterItem(CityRPGChainsawItem, 25, 1, 0);
 	City_RegisterItem(taserItem, 40, 1, 1);
 
 	// Default weapons
