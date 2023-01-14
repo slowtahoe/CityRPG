@@ -25,6 +25,12 @@ if(!isObject(CityRPGChainsawItem))
 		description = AudioCloseLooping3d;
 		preload = true;
 	};
+	datablock AudioProfile(CityRPGChainsawHitSound)
+	{
+		filename    = $City::DataPath @ "sounds/chainsaw_hit.wav";
+   		description = AudioClose3d;
+		preload = true;
+	};
 
 	datablock ParticleData(ChainsawRevParticle)
 	{
@@ -80,6 +86,16 @@ if(!isObject(CityRPGChainsawItem))
 
 	AddDamageType("CityRPGChainsaw",   "<bitmap:" @ $City::DataPath @ "ui/ci/Chainsaw> %1",  "%2 <bitmap:" @ $City::DataPath @ "ui/ci/Chainsaw> %1",0.5,1);
 	//AddDamageType("CityRPGChainsaw",   '<bitmap:add-ons/Weapon_melee_extended_II/ci_Chainsaw> %1',    '%2 <bitmap:add-ons/Weapon_melee_extended_II/ci_Chainsaw> %1',0.5,1);
+	datablock ExplosionData(CityRPGChainsawExplosion : swordExplosion)
+	{
+		soundProfile = CityRPGChainsawHitSound;
+
+		shakeCamera = true;
+		camShakeFreq = "20.0 22.0 20.0";
+		camShakeAmp = "1.0 1.0 1.0";
+		camShakeDuration = 0.5;
+		camShakeRadius = 10.0;
+	};
 
 	datablock ProjectileData(CityRPGChainsawProjectile)
 	{
@@ -91,6 +107,7 @@ if(!isObject(CityRPGChainsawItem))
 
 		muzzleVelocity      = 35;
 		velInheritFactor    = 1;
+		explosion           = CityRPGChainsawExplosion;
 
 		armingDelay         = 0;
 		lifetime            = 64;
