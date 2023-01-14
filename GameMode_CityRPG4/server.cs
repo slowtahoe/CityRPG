@@ -298,4 +298,9 @@ addExtraResource($City::DataPath @ "ui/location.png");
 addExtraResource($City::DataPath @ "ui/time.png");
 addExtraResource($City::DataPath @ "ui/hunger.png");
 
+addExtraResource($City::DataPath @ "ui/BrickIcons/Tree");
+addExtraResource($City::DataPath @ "bricks/Tree.blb");
+
+
+
 $City::Loaded = 1;
