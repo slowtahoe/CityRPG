@@ -1,7 +1,7 @@
 // ============================================================
 // Brick Data
 // ============================================================
-datablock fxDTSBrickData(CityRPGATMBrickData : brick2x4FData)
+datablock fxDTSBrickData(CityRPGATMBrickData)
 {
 	category = "CityRPG";
 	subCategory = "Info Bricks";
