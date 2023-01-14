@@ -24,6 +24,7 @@ $DevTools::File[%i++] = "add-ons/gamemode_cityrpg4/server/cityModules/mayor.cs";
 $DevTools::File[%i++] = "add-ons/gamemode_cityrpg4/server/items/tools/axe.cs";
 $DevTools::File[%i++] = "add-ons/gamemode_cityrpg4/server/items/tools/knife.cs";
 $DevTools::File[%i++] = "add-ons/gamemode_cityrpg4/server/items/tools/pickaxe.cs";
+$DevTools::File[%i++] = "add-ons/gamemode_cityrpg4/server/items/tools/jackhammer.cs";
 $DevTools::File[%i++] = "add-ons/gamemode_cityrpg4/server/items/weapons/baton.cs";
 $DevTools::File[%i++] = "add-ons/gamemode_cityrpg4/server/items/weapons/limitedbaton.cs";
 $DevTools::File[%i++] = "add-ons/gamemode_cityrpg4/server/items/weapons/taser.cs";
