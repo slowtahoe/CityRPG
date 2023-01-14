@@ -1,7 +1,7 @@
 // ============================================================
 // Brick Data
 // ============================================================
-datablock fxDTSBrickData(CityRPGATMBrickData : brick2x4FData)
+datablock fxDTSBrickData(CityRPGATMBrickData)
 {
 	brickFile = $City::DataPath @ "bricks/atm.blb";
 	iconName = $City::DataPath @ "ui/BrickIcons/ATM";
