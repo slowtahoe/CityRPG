@@ -1,6 +1,8 @@
 if(!isObject(CityRPGJackhammerItem))
 {
 	
+	AddDamageType("JackhammerDirect", addTaggedString("<bitmap:" @ $City::DataPath @ "ui/ci/Hammer> %1"), addTaggedString("%2 <bitmap:" @ $City::DataPath @ "ui/ci/Hammer> %1"), 1, 2);
+
 	datablock AudioProfile(jackhammerRevUSound)
 	{
 	filename    = "Add-Ons/GameMode_MetropolisRP/sounds/spinup.wav";
@@ -74,7 +76,6 @@ if(!isObject(CityRPGJackhammerItem))
 	impulseForce = 200;
 	};
 
-	AddDamageType("JackhammerDirect", addTaggedString("<bitmap:" @ $City::DataPath @ "ui/ci/Hammer> %1"), addTaggedString("%2 <bitmap:" @ $City::DataPath @ "ui/ci/Hammer> %1"), 1, 2);
 
 	datablock ProjectileData(CityRPGJackhammerProjectile)
 	{
@@ -84,7 +85,7 @@ if(!isObject(CityRPGJackhammerItem))
 	radiusDamageType    = $DamageType::JackhammerDirect;
 
 	brickExplosionRadius = 2;
-	brickExplosionImpact = true;          //destroy a brick if we hit it directly?
+	brickExplosionImpact = false;          //destroy a brick if we hit it directly?
 	brickExplosionForce  = 14;
 	brickExplosionMaxVolume = 6;          //max volume of bricks that we can destroy
 	brickExplosionMaxVolumeFloating = 50;  //max volume of bricks that we can destroy if they aren't connected to the ground
@@ -258,10 +259,10 @@ function CityRPGJackhammerImage::onUnMount(%this,%obj,%slot)
 		%obj.playThread(0, root);
 }
 
-function CityRPGJackhammerImage::onHitObject(%this, %obj, %slot, %col, %pos, %normal)
+function CityRPGJackhammerImage::onCollision(%this, %obj, %slot, %col, %pos, %normal)
 {
 	if(%col.getClassName() $= "fxDTSBrick" && %col.getDatablock().CityRPGBrickType == $CityBrick_ResourceOre)
 		%col.onMine(%obj.client);
 
-	parent::onHitObject(%this, %obj, %slot, %col, %pos, %normal);
+	parent::onCollision(%this, %obj, %slot, %col, %pos, %normal);
 }
