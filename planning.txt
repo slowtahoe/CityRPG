@@ -1,0 +1,11 @@
+Changes
+	- different drug blocks and shapes.
+	- ATM shape - DONE(sort of)
+	- Ore and tree shapes - DONE
+
+
+New Feature Ideas
+	- 
+
+Fixes
+	- possible ghost brick glitch? ghost brick disappears. have to ctrl k.
