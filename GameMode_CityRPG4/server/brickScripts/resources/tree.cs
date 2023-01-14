@@ -1,5 +1,8 @@
-datablock fxDTSBrickData(CityRPGTreeData : brickPineTreeData)
+datablock fxDTSBrickData(CityRPGTreeData)
 {
+	brickFile = $City::DataPath @ "bricks/Tree.blb";
+	iconName = $City::DataPath @ "ui/BrickIcons/Tree";
+
 	category = "CityRPG";
 	subCategory = "Resources";
 

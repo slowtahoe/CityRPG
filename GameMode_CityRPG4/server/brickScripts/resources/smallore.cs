@@ -1,7 +1,7 @@
 datablock fxDTSBrickData(CityRPGSmallOreData)
 {
-	brickFile = $City::DataPath @ "bricks/Small Ore.blb";
-	iconName = "base/client/ui/brickIcons/2x2";
+	brickFile = $City::DataPath @ "bricks/SmallOre.blb";
+	iconName = "base/client/ui/brickIcons/SmallOre";
 
 	category = "CityRPG";
 	subCategory = "Resources";
