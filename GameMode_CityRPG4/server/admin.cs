@@ -21,23 +21,26 @@ function CityMenu_Admin(%client)
 // ============================================================
 function serverCmdAdminMode(%client)
 {
-  %client.cityMenuClose();
-
-  %jobRevert = City.get(%client.bl_id, "jobRevert");
-  %jobID = City.get(%client.bl_id, "jobId");
-
-  if(%jobID $= $City::AdminJobID)
+  if(%client.isAdmin)
   {
-    %client.setCityJob(%jobRevert !$= 0 ? %jobRevert : $City::CivilianJobID, 1);
-    messageClient(%client, '', "\c6Admin mode has been disabled.");
-  }
-  else
-  {
-    City.set(%client.bl_id, "jobRevert", %jobID);
-    %client.setCityJob($City::AdminJobID, 1, 1);
+    %client.cityMenuClose();
 
-    messageClient(%client, '', "\c6You are now in \c4Admin Mode\c6. Time for crime!");
-    %client.adminModeMessage();
+    %jobRevert = City.get(%client.bl_id, "jobRevert");
+    %jobID = City.get(%client.bl_id, "jobId");
+
+    if(%jobID $= $City::AdminJobID)
+    {
+      %client.setCityJob(%jobRevert !$= 0 ? %jobRevert : $City::CivilianJobID, 1);
+      messageClient(%client, '', "\c6Admin mode has been disabled.");
+    }
+    else
+    {
+      City.set(%client.bl_id, "jobRevert", %jobID);
+      %client.setCityJob($City::AdminJobID, 1, 1);
+
+      messageClient(%client, '', "\c6You are now in \c4Admin Mode\c6. Time for crime!");
+      %client.adminModeMessage();
+    }
   }
 }
 
