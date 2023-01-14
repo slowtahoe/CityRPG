@@ -12,8 +12,34 @@ datablock fxDTSBrickData(CityRPGATMBrickData : brick2x4FData)
 	CityRPGBrickAdmin = false;
 
 	triggerDatablock = CityRPGInputTriggerData;
-	triggerSize = "2 4 1";
+	triggerSize = "4 4 3";
 	trigger = 0;
+
+	iconName = "add-ons/GameMode_CityRPG4/data/ui/BrickIcons/ATM";
+
+	brickSizeX=2;
+	brickSizeY=3;
+	brickSizeZ=10;
+
+	//Brick
+	brickRender=0;
+	brickCollide=1;
+	brickRaycast=1;
+	
+	//Model
+	spawnModel="add-ons/GameMode_CityRPG4/data/shapes/atm.1.dts";
+	modelOffset="0 0 0";
+	modelScale="1 1 1";
+	
+	colorCount=2;
+	
+	colorGroup[0]="ALL";
+		colorMode[0]="Intensity";
+		colorShift[0]="1 1 1 1";
+
+	colorGroup[1]="Screen";
+		colorMode[1]="Fix";
+		colorShift[1]="0 0.7 0 1";
 };
 
 // ============================================================
