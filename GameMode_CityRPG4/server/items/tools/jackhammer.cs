@@ -259,7 +259,7 @@ function CityRPGJackhammerImage::onUnMount(%this,%obj,%slot)
 		%obj.playThread(0, root);
 }
 
-function CityRPGJackhammerImage::onHitObject(%this, %obj, %slot, %col, %pos, %normal)
+function CityRPGJackhammerProjectile::onHitObject(%this, %obj, %slot, %col, %pos, %normal)
 {
 	if(%col.getClassName() $= "fxDTSBrick" && %col.getDatablock().CityRPGBrickType == $CityBrick_ResourceOre)
 		%col.onMine(%obj.client);
