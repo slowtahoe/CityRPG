@@ -1,11 +1,17 @@
 if(!isObject(CityRPGJackhammerItem))
+	
+datablock AudioProfile(jackhammerRevUSound)
 {
-	datablock AudioProfile(CityRPGJackhammerRevUSound)
+   filename    = "Add-Ons/GameMode_MetropolisRP/sounds/spinup.wav";
+   description = AudioClose3d;
+   preload = true;
+};
+datablock AudioProfile(jackhammerRevUSound)
 {
    filename    = $City::DataPath @ "sounds/spinup.wav";
    description = AudioClose3d;
    preload = true;
-};
+};  
 datablock AudioProfile(CityRPGJackhammerRevDSound)
 {
    filename    = $City::DataPath @ "sounds/spindown.wav";
@@ -238,13 +244,13 @@ datablock ShapeBaseImageData(CityRPGJackhammerImage)
 	stateWaitForTimeout[7]		= true;
 };
 
-function jackhammerImage::onMount(%this,%obj,%slot)
+function CityRPGJackhammerImage::onMount(%this,%obj,%slot)
 {
 	Parent::onMount(%this,%obj,%slot);	
 		%obj.playThread(0, armreadyboth);
 }
 
-function jackhammerImage::onUnMount(%this,%obj,%slot)
+function CityRPGJackhammerImage::onUnMount(%this,%obj,%slot)
 {
 	Parent::onMount(%this,%obj,%slot);	
 		%obj.playThread(0, root);
