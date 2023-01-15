@@ -128,7 +128,7 @@ function CityRPGDrugsellBrickData::parseData(%this, %brick, %client, %triggerSta
 			}
 			else
 			{
-				messageClient(%client,'',"\c3You don't have any steroid to sell.");
+				messageClient(%client,'',"\c3You don't have any steroids to sell.");
 				%client.drugname = "";
 				%client.selling = false;
 			}
