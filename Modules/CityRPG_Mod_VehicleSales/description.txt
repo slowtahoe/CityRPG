@@ -1,0 +1,3 @@
+Title: CityRPG Vehicle Sales
+Author: Cheesypeesy/King
+An expansion for CityRPG 4 that adds vehicle prices, instead of buying a brick you purchase the vehicle chosen.
