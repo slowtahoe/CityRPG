@@ -1,0 +1,3 @@
+Title: CityRPG Drugs
+Author: Various Authors
+An expansion for CityRPG 4 that adds drugs. Ported from classic CityRPG add-ons. The CityRPG 4 team did not develop the drug mod and takes no responsibility for its contents.
