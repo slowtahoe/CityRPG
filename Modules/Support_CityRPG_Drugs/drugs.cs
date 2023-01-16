@@ -893,12 +893,45 @@ function servercmdmydrugs(%client)
 
 	if(!isObject(%client.player))
 		return;
-
-	messageClient(%client,'',"\c6Your marijuana in grams :" @ CityRPGData.getData(%client.bl_id).valueMarijuana);
-	messageClient(%client,'',"\c6Your opium in grams: " @ CityRPGData.getData(%client.bl_id).valueopium);
-	messageClient(%client,'',"\c6Your speed in grams: " @ CityRPGData.getData(%client.bl_id).valuespeed);
-	messageClient(%client,'',"\c6Your steroid in grams: " @ CityRPGData.getData(%client.bl_id).valuesteroid);
-	messageClient(%client,'',"\c6Your total drugs in grams: " @ CityRPGData.getData(%client.bl_id).valuetotaldrugs);
+		
+	if((CityRPGData.getData(%client.bl_id).valueMarijuana) > 0)
+	{
+		messageClient(%client,'',"\c6Your marijuana in grams: " @ CityRPGData.getData(%client.bl_id).valueMarijuana);
+	}
+	else
+	{
+		messageClient(%client,'',"\c6Your marijuana in grams: 0";
+	}
+	if((CityRPGData.getData(%client.bl_id).valueOpium) > 0)
+	{
+		messageClient(%client,'',"\c6Your opium in grams: " @ CityRPGData.getData(%client.bl_id).valueOpium);
+	}
+	else
+	{
+		messageClient(%client,'',"\c6Your opium in grams: 0";
+	}
+	if((CityRPGData.getData(%client.bl_id).valueSpeed) > 0)
+	{
+		messageClient(%client,'',"\c6Your speed in grams: " @ CityRPGData.getData(%client.bl_id).valueSpeed);
+	}
+	else
+	{
+		messageClient(%client,'',"\c6Your speed in grams: 0";
+	}if((CityRPGData.getData(%client.bl_id).valuesteroid) > 0)
+	{
+		messageClient(%client,'',"\c6Your steroid in grams: " @ CityRPGData.getData(%client.bl_id).valuesteroid);
+	}
+	else
+	{
+		messageClient(%client,'',"\c6Your steroid in grams: 0";
+	}if((CityRPGData.getData(%client.bl_id).valuetotaldrugs) > 0)
+	{
+		messageClient(%client,'',"\c6Your total drugs in grams: " @ CityRPGData.getData(%client.bl_id).valuetotaldrugs);
+	}
+	else
+	{
+		messageClient(%client,'',"\c6Your total drugs in grams: 0";
+	}
 }
 
 function servercmddrughelp(%client)
