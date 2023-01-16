@@ -170,12 +170,20 @@ package CityDrugs {
 
 	function CityRPGLBImage::onHitObject(%this, %obj, %slot, %col, %pos, %normal)
 	{
-		if(%col.getClassName() $= "fxDTSBrick" && %col.getDatablock().isDrug)
+		%drug = %col.getID();
+		if(%drug.isGrowing != 0)
 		{
-			if(%col.isPlanted())
+			if(%col.getClassName() $= "fxDTSBrick" && %col.getDatablock().isDrug)
 			{
-				schedule(3000, 0, addEvid, %col, %obj.client);
+				if(%col.isPlanted())
+				{
+					schedule(3000, 0, addEvid, %col, %obj.client);
+				}
 			}
+		}
+		else
+		{
+			commandToClient(%col.client,'centerPrint',"\c6This drug is not watered. You can't turn in dirt as evidence!",3);
 		}
 
 		Parent::onHitObject(%this, %obj, %slot, %col, %pos, %normal);
@@ -183,12 +191,20 @@ package CityDrugs {
 
 	function CityRPGBatonImage::onHitObject(%this, %obj, %slot, %col, %pos, %normal)
 	{
-		if(%col.getClassName() $= "fxDTSBrick" && %col.getDatablock().isDrug)
+		%drug = %col.getID();
+		if(%drug.isGrowing != 0)
 		{
-			if(%col.isPlanted())
+			if(%col.getClassName() $= "fxDTSBrick" && %col.getDatablock().isDrug)
 			{
-				schedule(3000, 0, addEvid, %col, %obj.client);
+				if(%col.isPlanted())
+				{
+					schedule(3000, 0, addEvid, %col, %obj.client);
+				}
 			}
+		}
+		else
+		{
+			commandToClient(%col.client,'centerPrint',"\c6This drug is not watered. You can't turn in dirt as evidence!",3);
 		}
 
 		Parent::onHitObject(%this, %obj, %slot, %col, %pos, %normal);
