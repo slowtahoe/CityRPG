@@ -1,8 +1,10 @@
 // ============================================================
 // Brick Data
 // ============================================================
-datablock fxDTSBrickData(CityRPGVoteBrickData : brick2x4FData)
+datablock fxDTSBrickData(CityRPGVoteBrickData)
 {
+	brickFile = $City::DataPath @ "bricks/vote.blb";
+
 	category = "CityRPG";
 	subCategory = "City Info Bricks";
 
@@ -15,6 +17,9 @@ datablock fxDTSBrickData(CityRPGVoteBrickData : brick2x4FData)
 	triggerDatablock = CityRPGInputTriggerData;
 	triggerSize = "2 4 1";
 	trigger = 0;
+
+	hasPrint = 1;
+	printAspectRatio = "2x2r";
 };
 
 // ============================================================
