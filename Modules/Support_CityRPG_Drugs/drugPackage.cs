@@ -83,28 +83,48 @@ package CityDrugs {
     {
       if(%brick.getDataBlock().isDrug == true)
       {
-        %drug = %brick.getID();
-        if(%drug.watered == 0)
+        for(%i = 0; %i < ClientGroup.getCount(); %i++)
         {
-          %drug.watered = 1;
-
-          if(%client.bl_id == %brick.client.bl_id || %client.name == %brick.client.getPlayerName())
+          %clientCheck = ClientGroup.getObject(%i);
+          if((%clientCheck.getJobSO().usepolicecars) == true)
           {
-            messageClient(%client,'',"\c6You watered your \c3" @ %brick.getDataBlock().uiName @ " \c6plant.");
+            %disableDrugs = false;
           }
           else
           {
-            messageClient(%client,'',"\c6You watered someones \c3" @ %brick.getDataBlock().uiName @ " \c6plant.");
+            %disableDrugs = true;
           }
-          %drug.uiName = %brick.getDataBlock().uiName;
-          %drug.startGrowing(%drug,%brick);
         }
-        else if(%drug.watered == 1)
+
+        if(%disableDrugs == true)
         {
-          if(%drug.hasDrug)
-            commandToClient(%client,'centerPrint',"\c6This \c3" @ %brick.getDataBlock().uiName @ " \c6plant is ready to be harvested!",1);
-          else
-            commandToClient(%client,'centerPrint',"\c6This plant is already watered.",1);
+          commandToClient(%client,'centerPrint',"\c6No law enforcement online. Drug growth is disabled.",1);
+        }
+        else
+        {
+          %drug = %brick.getID();
+          if(%drug.watered == 0)
+          {
+            %drug.watered = 1;
+
+            if(%client.bl_id == %brick.client.bl_id || %client.name == %brick.client.getPlayerName())
+            {
+              messageClient(%client,'',"\c6You watered your \c3" @ %brick.getDataBlock().uiName @ " \c6plant.");
+            }
+            else
+            {
+              messageClient(%client,'',"\c6You watered someones \c3" @ %brick.getDataBlock().uiName @ " \c6plant.");
+            }
+            %drug.uiName = %brick.getDataBlock().uiName;
+            %drug.startGrowing(%drug,%brick);
+          }
+          else if(%drug.watered == 1)
+          {
+            if(%drug.hasDrug)
+              commandToClient(%client,'centerPrint',"\c6This \c3" @ %brick.getDataBlock().uiName @ " \c6plant is ready to be harvested!",1);
+            else
+              commandToClient(%client,'centerPrint',"\c6This plant is already watered.",1);
+          }
         }
       }
     }
