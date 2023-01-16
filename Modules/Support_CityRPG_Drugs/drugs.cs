@@ -771,7 +771,15 @@ function startSelling(%client)
 	else if(%drugname $= "Opium")
 	{
 		%amount = CityRPGData.getData(%client.bl_id).valueOpium;
-}
+	}
+	else if(%drugname $= "Speed")
+	{
+		%amount = CityRPGData.getData(%client.bl_id).valueSpeed;
+	}
+	else if(%drugname $= "Steroid")
+	{
+		%amount = CityRPGData.getData(%client.bl_id).valueSteroid;
+	}
 
 if(%amount > 0)
 {
@@ -798,6 +806,14 @@ if(%amount > 0)
 	else if(%drugname $= "opium")
 	{
 		%profit = $CityRPG::drugs::opium::basePrice;
+	}
+	else if(%drugname $= "speed")
+	{
+		%profit = $CityRPG::drugs::speed::basePrice;
+	}
+	else if(%drugname $= "steroid")
+	{
+		%profit = $CityRPG::drugs::steroid::basePrice;
 	}
 
 	%totalcash = %grams * %profit;
@@ -840,6 +856,16 @@ if(%amount > 0)
 		else if(%drugname $= "opium")
 		{
 			CityRPGData.getData(%client.bl_id).valueopium -= %grams;
+			CityRPGData.getData(%client.bl_id).valuetotaldrugs -= %grams;
+		}
+		else if(%drugname $= "speed")
+		{
+			CityRPGData.getData(%client.bl_id).valuespeed -= %grams;
+			CityRPGData.getData(%client.bl_id).valuetotaldrugs -= %grams;
+		}
+		else if(%drugname $= "steroid")
+		{
+			CityRPGData.getData(%client.bl_id).valuesteroid -= %grams;
 			CityRPGData.getData(%client.bl_id).valuetotaldrugs -= %grams;
 		}
 	}
