@@ -65,7 +65,7 @@ exec($City::ScriptPath @ "brickScripts/info/criminalbank.cs");
 exec($City::ScriptPath @ "brickScripts/info/education.cs");
 exec($City::ScriptPath @ "brickScripts/info/job.cs");
 exec($City::ScriptPath @ "brickScripts/info/vote.cs");
-exec($City::ScriptPath @ "brickScripts/info/personalSafe.cs");
+//exec($City::ScriptPath @ "brickScripts/info/personalSafe.cs");
 
 // ============================================================
 // Lots
