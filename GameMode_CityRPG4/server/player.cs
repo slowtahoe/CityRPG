@@ -191,12 +191,43 @@ function gameConnection::setGameBottomPrint(%client)
 	else
 		%health = mFloor(100 - %client.player.getDamageLevel());
 
-	%client.CityRPGPrint = %client.CityRPGPrint @ "<bitmap:" @ $City::DataPath @ "ui/health.png>\c6 Health:" SPC %health @ "%";
+
+	%healthIcon = ("");
+	%healthStatus = ("");
+
+	if(%health >= 100)
+	{
+  		%healthIcon = ("<bitmap:" @ $City::DataPath @ "ui/healthy.png> ");
+		%healthStatus = ("\c6 Healthy");
+	}
+		else if(%health > 60)
+		{
+    		%healthIcon = ("<bitmap:" @ $City::DataPath @ "ui/hurt.png> ");
+			%healthStatus = ("Hurt");
+		}
+    		else if(%health > 30)
+			{
+        		%healthIcon = ("<bitmap:" @ $City::DataPath @ "ui/injured.png> ");
+				%healthStatus = ("Injured");
+			}
+      			else if(%health > 0)
+				{
+          			%healthIcon = ("<bitmap:" @ $City::DataPath @ "ui/dying.png> ");
+					%healthStatus = ("Dying");
+				}
+        			else
+					{
+          				%healthIcon = ("<bitmap:" @ $City::DataPath @ "ui/dead.png> ");
+						%healthStatus = ("Dead");
+					}	
+
+
+	%client.CityRPGPrint = %client.CityRPGPrint @ %healthIcon @ %healthStatus;
 
 	%client.CityRPGPrint = %client.CityRPGPrint @ "   <bitmap:" @ $City::DataPath @ "ui/cash.png>\c6 Cash:" SPC %client.getCashString();
 
 	// TODO: Move wanted level to center print so this doesn't cut off the bottom HUD
-	//%client.CityRPGPrint = %client.CityRPGPrint @ "   <bitmap:" @ $City::DataPath @ "ui/hunger.png>\c6 Hunger: Well-fed";
+	%client.CityRPGPrint = %client.CityRPGPrint @ "   <bitmap:" @ $City::DataPath @ "ui/hunger.png>\c6 Hunger: Well-fed";
 
 	// Placeholder
 	%client.CityRPGPrint = %client.CityRPGPrint @ "<just:right>\c6" @ %time12hr SPC %timeUnit;

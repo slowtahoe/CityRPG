@@ -301,6 +301,14 @@ addExtraResource($City::DataPath @ "ui/location.png");
 addExtraResource($City::DataPath @ "ui/time.png");
 addExtraResource($City::DataPath @ "ui/hunger.png");
 
+addExtraResource($City::DataPath @ "ui/healthy.png>");
+addExtraResource($City::DataPath @ "ui/hurt.png>");
+addExtraResource($City::DataPath @ "ui/injured.png>");
+addExtraResource($City::DataPath @ "ui/dying.png>");
+addExtraResource($City::DataPath @ "ui/dead.png>");
+
+
+
 
 
 
