@@ -1,10 +1,8 @@
 // ============================================================
 // Brick Data
 // ============================================================
-datablock fxDTSBrickData(CityRPGATMBrickData)
+datablock fxDTSBrickData(CityRPGATMBrickData : brick2x4FData)
 {
-	brickFile = $City::DataPath @ "bricks/atm.blb";
-	iconName = $City::DataPath @ "ui/BrickIcons/ATM";
 
 	category = "CityRPG";
 	subCategory = "Info Bricks";
@@ -15,7 +13,7 @@ datablock fxDTSBrickData(CityRPGATMBrickData)
 	CityRPGBrickAdmin = false;
 
 	triggerDatablock = CityRPGInputTriggerData;
-	triggerSize = "4 4 3";
+	triggerSize = "2 4 1";
 	trigger = 0;
 };
 
@@ -50,16 +48,19 @@ function CityMenu_HackATMPrompt(%client)
 		%clientCheck = ClientGroup.getObject(%i);
 		if((%clientCheck.getJobSO().law) == true)
 		{
-			%disableHacking = false;
+			%enableHacking = true;
+			echo("ATM hacking enabled");
 		}
 		else
 		{
-			%disableHacking = true;
+			%enableHacking = false;
+			echo("ATM hacking disabled");
 		}
 	}
 
-	if(%disableHacking == true)
+	if(%enableHacking == false)
 	{
+		echo("ATM hacking disabled");
 		messageClient(%client,'',"\c6No law enforcement online. ATM hacking is disabled.");
 		return;
 	}

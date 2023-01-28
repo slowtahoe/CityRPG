@@ -680,6 +680,10 @@ package CityRPG_Commands
 
 		CityMenu_Lot(%client);
 	}
+	function serverCmdgetposition(%client)
+	{
+		messageClient(%client,'',"<color:FFFFFF>You are at "@%client.player.position);
+	}
 };
 
 deactivatePackage("CityRPG_Commands");

@@ -74,7 +74,7 @@ datablock fxDTSBrickData(CityRPGSmallLotBrickData : brick16x16FData)
 {
 	iconName = $City::DataPath @ "ui/BrickIcons/16x16LotIcon";
 
-	category = "Baseplates";
+	category = "CityRPG";
 	subCategory = "CityRPG Lots";
 
 	uiName = "16x16 Lot";
@@ -91,7 +91,7 @@ datablock fxDTSBrickData(CityRPGHalfSmallLotBrickData : brick16x32FData)
 {
 	iconName = $City::DataPath @ "ui/BrickIcons/16x32LotIcon";
 
-	category = "Baseplates";
+	category = "CityRPG";
 	subCategory = "CityRPG Lots";
 
 	uiName = "16x32 Lot";
@@ -108,7 +108,7 @@ datablock fxDTSBrickData(CityRPGMediumLotBrickData : brick32x32FData)
 {
 	iconName = $City::DataPath @ "ui/BrickIcons/32x32LotIcon";
 
-	category = "Baseplates";
+	category = "CityRPG";
 	subCategory = "CityRPG Lots";
 
 	uiName = "32x32 Lot";
@@ -126,7 +126,7 @@ datablock fxDTSBrickData(CityRPGHalfLargeLotBrickData)
 	brickFile = $City::DataPath @ "bricks/32x64F.blb";
 	iconName = $City::DataPath @ "ui/BrickIcons/32x64LotIcon";
 
-	category = "Baseplates";
+	category = "CityRPG";
 	subCategory = "CityRPG Lots";
 
 	uiName = "32x64 Lot";
@@ -143,7 +143,7 @@ datablock fxDTSBrickData(CityRPGLargeLotBrickData : brick64x64FData)
 {
 	iconName = $City::DataPath @ "ui/BrickIcons/64x64LotIcon";
 
-	category = "Baseplates";
+	category = "CityRPG";
 	subCategory = "CityRPG Lots";
 
 	uiName = "64x64 Lot";
@@ -155,6 +155,150 @@ datablock fxDTSBrickData(CityRPGLargeLotBrickData : brick64x64FData)
 	triggerSize = "64 64 12800";
 	trigger = 0;
 };
+
+datablock fxDTSBrickData(CityRPGSmallLongLotBrickData)
+{
+	brickFile = $City::DataPath @ "bricks/16x48F.blb";
+	iconName = $City::DataPath @ "ui/BrickIcons/16x32LotIcon";
+
+	category = "CityRPG";
+	subCategory = "CityRPG Lots";
+
+	uiName = "16x48 Lot";
+
+	CityRPGBrickType = $CityBrick_Lot;
+	CityRPGBrickAdmin = true;
+
+	triggerDatablock = CityRPGLotTriggerData;
+	triggerSize = "16 48 5600";
+	trigger = 0;
+};
+
+datablock fxDTSBrickData(CityRPGThirdMedLotBrickData)
+{
+	brickFile = $City::DataPath @ "bricks/24x24F.blb";
+	iconName = $City::DataPath @ "ui/BrickIcons/32x32LotIcon";
+
+	category = "CityRPG";
+	subCategory = "CityRPG Lots";
+
+	uiName = "24x24 Lot";
+
+	CityRPGBrickType = $CityBrick_Lot;
+	CityRPGBrickAdmin = true;
+
+	triggerDatablock = CityRPGLotTriggerData;
+	triggerSize = "24 24 5600";
+	trigger = 0;
+};
+
+datablock fxDTSBrickData(CityRPGMedLongLotBrickData)
+{
+	brickFile = $City::DataPath @ "bricks/32x48F.blb";
+	iconName = $City::DataPath @ "ui/BrickIcons/32x32LotIcon";
+
+	category = "CityRPG";
+	subCategory = "CityRPG Lots";
+
+	uiName = "32x48 Lot";
+
+	CityRPGBrickType = $CityBrick_Lot;
+	CityRPGBrickAdmin = true;
+
+	triggerDatablock = CityRPGLotTriggerData;
+	triggerSize = "32 48 8000";
+	trigger = 0;
+};
+
+datablock fxDTSBrickData(CityRPGThirdLargeLotBrickData)
+{
+	brickFile = $City::DataPath @ "bricks/48x48F.blb";
+	iconName = $City::DataPath @ "ui/BrickIcons/32x64LotIcon";
+
+	category = "CityRPG";
+	subCategory = "CityRPG Lots";
+
+	uiName = "48x48 Lot";
+
+	CityRPGBrickType = $CityBrick_Lot;
+	CityRPGBrickAdmin = true;
+
+	triggerDatablock = CityRPGLotTriggerData;
+	triggerSize = "48 48 9600";
+	trigger = 0;
+};
+
+datablock fxDTSBrickData(CityRPGThirdLargeLongLotBrickData)
+{
+	brickFile = $City::DataPath @ "bricks/48x64F.blb";
+	iconName = $City::DataPath @ "ui/BrickIcons/64x64LotIcon";
+
+	category = "CityRPG";
+	subCategory = "CityRPG Lots";
+
+	uiName = "48x64 Lot";
+
+	CityRPGBrickType = $CityBrick_Lot;
+	CityRPGBrickAdmin = true;
+
+	triggerDatablock = CityRPGLotTriggerData;
+	triggerSize = "48 64 11200";
+	trigger = 0;
+};
+
+// datablock fxDTSBrickData(CityRPGXLLotBrickData)
+// {
+// 	brickFile = $City::DataPath @ "bricks/64x80F.blb";
+// 	iconName = $City::DataPath @ "ui/BrickIcons/64x64LotIcon";
+
+// 	category = "CityRPG";
+// 	subCategory = "CityRPG Lots";
+
+// 	uiName = "64x80 Lot";
+
+// 	CityRPGBrickType = $CityBrick_Lot;
+// 	CityRPGBrickAdmin = true;
+
+// 	triggerDatablock = CityRPGLotTriggerData;
+// 	triggerSize = "64 80 14400";
+// 	trigger = 0;
+// };
+
+// datablock fxDTSBrickData(CityRPGXXLLotBrickData)
+// {
+// 	brickFile = $City::DataPath @ "bricks/64x96F.blb";
+// 	iconName = $City::DataPath @ "ui/BrickIcons/64x64LotIcon";
+
+// 	category = "CityRPG";
+// 	subCategory = "CityRPG Lots";
+
+// 	uiName = "64x96 Lot";
+
+// 	CityRPGBrickType = $CityBrick_Lot;
+// 	CityRPGBrickAdmin = true;
+
+// 	triggerDatablock = CityRPGLotTriggerData;
+// 	triggerSize = "64 96 16000";
+// 	trigger = 0;
+// };
+
+// datablock fxDTSBrickData(CityRPGXXXLLotBrickData)
+// {
+// 	brickFile = $City::DataPath @ "bricks/96x128F.blb";
+// 	iconName = $City::DataPath @ "ui/BrickIcons/64x64LotIcon";
+
+// 	category = "CityRPG";
+// 	subCategory = "CityRPG Lots";
+
+// 	uiName = "96x128 Lot";
+
+// 	CityRPGBrickType = $CityBrick_Lot;
+// 	CityRPGBrickAdmin = true;
+
+// 	triggerDatablock = CityRPGLotTriggerData;
+// 	triggerSize = "96 128 22400";
+// 	trigger = 0;
+// };
 
 // Sale Lots
 //datablock fxDTSBrickData(CityRPGSmallZoneBrickData : brick16x16FData)
@@ -379,19 +523,19 @@ function fxDTSBrick::cityLotTriggerCheck(%brick)
 function fxDTSBrick::getCityBrickUnstable(%brick)
 {
 	// What these shenanigans are for, in short:
-	// We need to determine if any part of this brick is outside the bounds of any lot zones. This includes having, but allow it to overlap between zones. The solution:
+	// We need to determine if any part of this brick is outside the bounds of any lot zones. The solution:
 	// 1. Calculate the brick's volume (lengh*width*height... stellar maths)
 	// 2. Using a container box search, find each zone that the brick falls within.
 	// 3. For each zone, calculate the volume of the brick, clamped to the bounds of the zone.
 	// 4. If the sum of all the clamped volumes != the brick's actual volume, it's out of bounds (return true).
 
-	%brickMinX = getWord(%brick.getWorldBox(), 0) + 0.0016;
-	%brickMinY = getWord(%brick.getWorldBox(), 1) + 0.0013;
-	%brickMinZ = getWord(%brick.getWorldBox(), 2) + 0.00126;
+	%brickMinX = getWord(%brick.getWorldBox(), 0);
+	%brickMinY = getWord(%brick.getWorldBox(), 1);
+	%brickMinZ = getWord(%brick.getWorldBox(), 2);
 
-	%brickMaxX = getWord(%brick.getWorldBox(), 3) - 0.0016;
-	%brickMaxY = getWord(%brick.getWorldBox(), 4) - 0.0013;
-	%brickMaxZ = getWord(%brick.getWorldBox(), 5) - 0.00126;
+	%brickMaxX = getWord(%brick.getWorldBox(), 3);
+	%brickMaxY = getWord(%brick.getWorldBox(), 4);
+	%brickMaxZ = getWord(%brick.getWorldBox(), 5);
 
 	%brickSizeX = mAbs(%brickMaxX-%brickMinX);
 	%brickSizeY = mAbs(%brickMaxY-%brickMinY);
@@ -399,7 +543,7 @@ function fxDTSBrick::getCityBrickUnstable(%brick)
 
 	%brickVol = %brickSizeX * %brickSizeY * %brickSizeZ;
 
-	%boxSize = %brick.cityGetBoxSize();
+	%boxSize = %brickSizeX SPC %brickSizeY SPC %brickSizeZ;
 
 	%totalTriggerVol = 0;
 	initContainerBoxSearch(%brick.getWorldBoxCenter(), %boxSize, $typeMasks::triggerObjectType);

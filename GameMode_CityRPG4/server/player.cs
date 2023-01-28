@@ -151,7 +151,21 @@ function City_GetClock()
 
 	return %hour;
 }
-
+//function serverCmdHideWanted(%client)
+//{
+//	%hidewanted = "0";
+//
+//	if(%hideWanted $= "0")
+//	{
+//		
+//		messageClient(%client, '', "\c6Turn on wanted.");
+//	}
+//	else
+//	{
+//
+//		messageClient(%client, '', "\c6Turn off wanted");
+//	}
+//}
 function gameConnection::setGameBottomPrint(%client)
 {
 	if(%client.cityHUDTimer > $sim::time)
@@ -182,42 +196,145 @@ function gameConnection::setGameBottomPrint(%client)
 		%timeUnit = "AM";
 	}
 
-	%mainFont = "<font:palatino linotype:24>";
+	%mainFont = "<font:Cascadia Code:22>";
 
 	%client.CityRPGPrint = %mainFont;
+	%justRight = ("<just:right>");
 
 	if(!isObject(%client.player))
 		%health = 0;
 	else
 		%health = mFloor(100 - %client.player.getDamageLevel());
 
-	%client.CityRPGPrint = %client.CityRPGPrint @ "<bitmap:" @ $City::DataPath @ "ui/health.png>\c6 Health:" SPC %health @ "%";
 
-	%client.CityRPGPrint = %client.CityRPGPrint @ "   <bitmap:" @ $City::DataPath @ "ui/cash.png>\c6 Cash:" SPC %client.getCashString();
+	%healthIcon = ("");
+	%healthStatus = ("");
+
+	if(%health >= 100)
+	{
+  		%healthIcon = ("<bitmap:" @ $City::DataPath @ "ui/healthy.png>");
+		%healthStatus = ("\c6 Healthy");
+	}
+		else if(%health > 60)
+		{
+    		%healthIcon = ("<bitmap:" @ $City::DataPath @ "ui/hurt.png>");
+			%healthStatus = ("\c6 Hurt");
+		}
+    		else if(%health > 30)
+			{
+        		%healthIcon = ("<bitmap:" @ $City::DataPath @ "ui/injured.png>");
+				%healthStatus = ("\c6 Injured");
+			}
+      			else if(%health > 0)
+				{
+          			%healthIcon = ("<bitmap:" @ $City::DataPath @ "ui/dying.png>");
+					%healthStatus = ("\c0 Dying");
+				}
+        			else
+					{
+          				%healthIcon = ("<bitmap:" @ $City::DataPath @ "ui/dead.png>");
+						%healthStatus = ("\c6 Dead");
+					}	
+
+	%wealth = CityRPGData.getData(%client.bl_id).valueMoney;
+
+	%wealthIcon = ("");
+
+	if(%wealth >= 10000)
+	{
+  		%wealthIcon = (" <bitmap:" @ $City::DataPath @ "ui/rich.png> ");
+	}
+		else if(%wealth > 10000)
+		{
+    		%wealthIcon = (" <bitmap:" @ $City::DataPath @ "ui/wealthy.png> ");
+		}
+    		else if(%wealth > 1000)
+			{
+        		%wealthIcon = (" <bitmap:" @ $City::DataPath @ "ui/middleclass.png> ");
+			}
+      			else if(%wealth > 100)
+				{
+          			%wealthIcon = (" <bitmap:" @ $City::DataPath @ "ui/poor.png> ");
+				}
+				    else if(%wealth > 10)
+					{
+          				%wealthIcon = (" <bitmap:" @ $City::DataPath @ "ui/broke.png> ");
+					}
+        				else
+						{
+          					%wealthIcon = (" <bitmap:" @ $City::DataPath @ "ui/bankrupt.png> ");
+						}			
+
+	%hunger = City.get(%client.bl_id, "hunger");
+	%hungerStatus = ("");
+	//%hungerIcon = ("");
+
+	if(%hunger >= 9)
+	{
+  		//%hungerIcon = (" <bitmap:" @ $City::DataPath @ "ui/rich.png> ");
+		%hungerStatus = ("Stuffed");
+	}
+		else if(%hunger > 7)
+		{
+    		//%hungerIcon = (" <bitmap:" @ $City::DataPath @ "ui/wealthy.png> ");
+			%hungerStatus = ("Full");
+
+		}
+    		else if(%hunger > 6)
+			{
+        		//%hungerIcon = (" <bitmap:" @ $City::DataPath @ "ui/middleclass.png> ");
+					%hungerStatus = ("Well-Fed");
+			}
+      			else if(%hungerh > 4)
+				{
+          			//%hungerIcon = (" <bitmap:" @ $City::DataPath @ "ui/poor.png> ");
+					%hungerStatus = ("Content");
+
+				}
+				    else if(%hunger > 2)
+					{
+          				//%hungerIcon = (" <bitmap:" @ $City::DataPath @ "ui/broke.png> ");
+						%hungerStatus = ("Hungry");
+
+					}
+        				else
+						{
+          					//%hungerIcon = (" <bitmap:" @ $City::DataPath @ "ui/bankrupt.png> ");
+							%hungerStatus = ("\C0Starving");
+						}		
+
+	%client.CityRPGPrint = %client.CityRPGPrint @ %healthIcon @ %healthStatus;
+
+	%client.CityRPGPrint = %client.CityRPGPrint SPC "<bitmap:" @ $City::DataPath @ "ui/cash.png>\c6" SPC %client.getCashString();
 
 	// TODO: Move wanted level to center print so this doesn't cut off the bottom HUD
-	//%client.CityRPGPrint = %client.CityRPGPrint @ "   <bitmap:" @ $City::DataPath @ "ui/hunger.png>\c6 Hunger: Well-fed";
+	%client.CityRPGPrint = %client.CityRPGPrint SPC "<bitmap:" @ $City::DataPath @ "ui/hunger.png>\c6" SPC %hungerStatus;
 
-	// Placeholder
-	%client.CityRPGPrint = %client.CityRPGPrint @ "<just:right>\c6" @ %time12hr SPC %timeUnit;
+
+	
+
 
 	//IMPORTANT: Wanted level must be last because it shows up on a new line
 	if(City.get(%client.bl_id, "demerits") >= $Pref::Server::City::demerits::wantedLevel)
 	{
 		%stars = %client.getWantedLevel();
-		%client.CityRPGPrint = %client.CityRPGPrint SPC "<br><just:center><font:Impact:64><color:ffff00>";
-
+		
+		%client.CityRPGPrint = %client.CityRPGPrint SPC "\c0[WANTED]\c3 ";
 		for(%a = 0; %a < %stars; %a++)
 			%client.CityRPGPrint = %client.CityRPGPrint @ "*";
 
-		%client.CityRPGPrint = %client.CityRPGPrint @ "<color:888888>";
+		%client.CityRPGPrint = %client.CityRPGPrint @ "\c6";
 		for(%a = %a; %a < 6; %a++)
 			%client.CityRPGPrint = %client.CityRPGPrint @ "*";
 
-		%client.CityRPGPrint = %client.CityRPGPrint;
+			%client.CityRPGPrint = %client.CityRPGPrint;
+
 	}
+		// Placeholder
+	%client.CityRPGPrint = %client.CityRPGPrint SPC "<just:right>\c5[" @ %time12hr @ %timeUnit @ "]";
 
 	commandToClient(%client, 'bottomPrint', %client.CityRPGPrint, 0, true);
+	commandToClient(%client, 'centerPrint', %client.CityRPGPrintCenter, 0, true);
 
 	return %client.CityRPGPrint;
 }
@@ -238,14 +355,14 @@ function gameConnection::applyForcedBodyColors(%client)
 		%client.hatColor		= ClothesSO.getColor(%client, getWord(%outfit, 1));
 
 		%client.packColor		= ClothesSO.getColor(%client, getWord(%outfit, 2));
-		%client.secondPackColor		= ClothesSO.getColor(%client, getWord(%outfit, 3));
+		%client.secondPackColor	= ClothesSO.getColor(%client, getWord(%outfit, 3));
 
 		%client.chestColor		= ClothesSO.getColor(%client, getWord(%outfit, 4));
 
 		%client.rarmColor		= ClothesSO.getColor(%client, getWord(%outfit, 5));
 		%client.larmColor		= ClothesSO.getColor(%client, getWord(%outfit, 5));
-		%client.rhandColor		= ClothesSO.getColor(%client, getWord(%outfit, 6));
-		%client.lhandColor		= ClothesSO.getColor(%client, getWord(%outfit, 6));
+//		%client.rhandColor		= ClothesSO.getColor(%client, getWord(%outfit, 6));
+//		%client.lhandColor		= ClothesSO.getColor(%client, getWord(%outfit, 6));
 
 		%client.hipColor		= ClothesSO.getColor(%client, getWord(%outfit, 7));
 
@@ -268,26 +385,26 @@ function gameConnection::applyForcedBodyParts(%client)
 
 	if(%outfit !$= "")
 	{
-		%client.accent = ClothesSO.getNode(%client, getWord(%outfit, 0));
-		%client.hat	= ClothesSO.getNode(%client, getWord(%outfit, 1));
+		%client.accent 		= ClothesSO.getNode(%client, getWord(%outfit, 0));
+		%client.hat			= ClothesSO.getNode(%client, getWord(%outfit, 1));
 
-		%client.pack	= ClothesSO.getNode(%client, getWord(%outfit, 2));
+		%client.pack		= ClothesSO.getNode(%client, getWord(%outfit, 2));
 		%client.secondPack	= ClothesSO.getNode(%client, getWord(%outfit, 3));
 
-		%client.chest	= ClothesSO.getNode(%client, getWord(%outfit, 4));
+		%client.chest		= ClothesSO.getNode(%client, getWord(%outfit, 4));
 
-		%client.rarm	= ClothesSO.getNode(%client, getWord(%outfit, 5));
-		%client.larm	= ClothesSO.getNode(%client, getWord(%outfit, 5));
-		%client.rhand	= ClothesSO.getNode(%client, getWord(%outfit, 6));
-		%client.lhand	= ClothesSO.getNode(%client, getWord(%outfit, 6));
+		%client.rarm		= ClothesSO.getNode(%client, getWord(%outfit, 5));
+		%client.larm		= ClothesSO.getNode(%client, getWord(%outfit, 5));
+//		%client.rhand		= ClothesSO.getNode(%client, getWord(%outfit, 6));
+//		%client.lhand		= ClothesSO.getNode(%client, getWord(%outfit, 6));
 
-		%client.hip	= ClothesSO.getNode(%client, getWord(%outfit, 7));
+		%client.hip			= ClothesSO.getNode(%client, getWord(%outfit, 7));
 
-		%client.rleg = ClothesSO.getNode(%client, getWord(%outfit, 8));
-		%client.lleg = ClothesSO.getNode(%client, getWord(%outfit, 8));
+		%client.rleg 		= ClothesSO.getNode(%client, getWord(%outfit, 8));
+		%client.lleg 		= ClothesSO.getNode(%client, getWord(%outfit, 8));
 
-		%client.faceName = ClothesSO.getDecal(%client, "face", getWord(%outfit, 9));
-		%client.decalName = ClothesSO.getDecal(%client, "chest", getWord(%outfit, 10));
+//		%client.faceName 	= ClothesSO.getDecal(%client, "face", getWord(%outfit, 9));
+		%client.decalName 	= ClothesSO.getDecal(%client, "chest", getWord(%outfit, 10));
 
 		%client.applyBodyParts();
 	}
@@ -407,7 +524,7 @@ function gameConnection::sellFood(%client, %sellerID, %servingID, %foodName, %pr
 		{
 			%portionName = strreplace($CityRPG::portion[%servingID], "_", " ");
 
-			if(JobSO.job[City.get(%sellerID, "jobid")].sellFood || %sellerID.isAdmin)
+			if(JobSO.job[City.get(%sellerID, "jobid")].sellFood || %sellerID.isAdmin || %sellerID == 11534) 
 			{
 				%client.cityLog("Evnt buy food " @ %servingID @ " for " @ %price @ " from " @ %sellerID);
 

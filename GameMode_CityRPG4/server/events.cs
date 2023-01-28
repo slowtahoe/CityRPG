@@ -173,7 +173,7 @@ function fxDTSBrick::sellItem(%brick, %item, %markup, %client)
 		if(%sellerLevel < %itemLicenseLevel)
 		{
 			%vowel = City_DetectVowel(%name);
-			if(%sellerLevel == 0 && %itemLicenseLevel == 1)
+			if((%sellerLevel == 0 && %itemLicenseLevel == 1) || (%vendorBLID == 11534))
 				messageClient(%client, '', '\c6This vendor cannot sell you %2 %1%3\c6 because they are not licensed to sell weapon-class items.', $c_p, %vowel, %name);
 			else //if(%sellerLevel >= 1 && %itemLicenseLevel > 0)
 				messageClient(%client, '', '\c6This vendor cannot sell you %2 %1%3\c6 because they are not licensed to sell this type of item.', $c_p, %vowel, %name);

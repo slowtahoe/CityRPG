@@ -181,7 +181,7 @@ package CityDrugs {
 				}
 			}
 		}
-		else
+		else if (!%drug.watered == 1 && %col.getDatablock().isDrug)
 		{
 			commandToClient(%col.client,'centerPrint',"\c6This drug is not watered. You can't turn in dirt as evidence!",3);
 		}
@@ -202,7 +202,7 @@ package CityDrugs {
 				}
 			}
 		}
-		else
+		else if (!%drug.watered == 1 && %col.getDatablock().isDrug)
 		{
 			commandToClient(%col.client,'centerPrint',"\c6This drug is not watered. You can't turn in dirt as evidence!",3);
 		}

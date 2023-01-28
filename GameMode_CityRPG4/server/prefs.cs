@@ -72,9 +72,17 @@ function City_InitPrefs()
 
 	City_RegisterPref("Economy", "Lot Cost - 16x16", "$Pref::Server::City::lotCost" @ "CityRPGSmallLotBrickData", "int", "0 999999", 500);
 	City_RegisterPref("Economy", "Lot Cost - 16x32", "$Pref::Server::City::lotCost" @ "CityRPGHalfSmallLotBrickData", "int", "0 999999", 750);
+	City_RegisterPref("Economy", "Lot Cost - 24x24", "$Pref::Server::City::lotCost" @ "CityRPGThirdMedLotBrickData", "int", "0 999999", 850);
+	City_RegisterPref("Economy", "Lot Cost - 16x48", "$Pref::Server::City::lotCost" @ "CityRPGSmallLongLotBrickData", "int", "0 999999", 1000);
 	City_RegisterPref("Economy", "Lot Cost - 32x32", "$Pref::Server::City::lotCost" @ "CityRPGMediumLotBrickData", "int", "0 999999", 1500);
-	City_RegisterPref("Economy", "Lot Cost - 32x64", "$Pref::Server::City::lotCost" @ "CityRPGHalfLargeLotBrickData", "int", "0 999999", 2000);
+	City_RegisterPref("Economy", "Lot Cost - 32x48", "$Pref::Server::City::lotCost" @ "CityRPGMedLongLotBrickData", "int", "0 999999", 2000);
+	City_RegisterPref("Economy", "Lot Cost - 32x64", "$Pref::Server::City::lotCost" @ "CityRPGHalfLargeLotBrickData", "int", "0 999999", 2500);
+	City_RegisterPref("Economy", "Lot Cost - 48x48", "$Pref::Server::City::lotCost" @ "CityRPGThirdLargeLotBrickData", "int", "0 999999", 3000);
+	City_RegisterPref("Economy", "Lot Cost - 48x64", "$Pref::Server::City::lotCost" @ "CityRPGThirdLargeLongLotBrickData", "int", "0 999999", 3500);
 	City_RegisterPref("Economy", "Lot Cost - 64x64", "$Pref::Server::City::lotCost" @ "CityRPGLargeLotBrickData", "int", "0 999999", 4500);
+	// City_RegisterPref("Economy", "Lot Cost - 64x80", "$Pref::Server::City::lotCost" @ "CityRPGXLLotBrickData", "int", "0 999999", 5000);
+	// City_RegisterPref("Economy", "Lot Cost - 64x96", "$Pref::Server::City::lotCost" @ "CityRPGXXLLotBrickData", "int", "0 999999", 6000);
+	// City_RegisterPref("Economy", "Lot Cost - 96x128", "$Pref::Server::City::lotCost" @ "CityRPGXXXLLotBrickData", "int", "0 999999", 12000);
 
 	City_RegisterPref("Mayor", "Election Active", "$Pref::Server::City::Mayor::Active", "bool", "", true);
 	City_RegisterPref("Mayor", "Mayor Run Cost", "$Pref::Server::City::Mayor::Cost", "int", "0 50000", 500);
@@ -95,6 +103,8 @@ $Pref::Server::City::DisableIntroMessage = true;
 $ATM::Min = 25;
 $ATM::Max = 300;
 $ATM::Demerits = 500;
+
+$Pref::Server:City::CrimBankFee = 10; //percent
 
 $Pref::Server::City::demerits::recordShredCost = 5000;
 $Pref::Server::City::demerits::demeritCost = 1.4;

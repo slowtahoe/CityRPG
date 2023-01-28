@@ -16,7 +16,7 @@ $City::ScriptPath = "Add-Ons/GameMode_CityRPG4/server/";
 $City::DataPath = "Add-Ons/GameMode_CityRPG4/data/";
 $City::SavePath = "config/server/CityRPG4_A2/";
 
-$City::Version = "1.1.1";
+$City::Version = "1.1.1 iPhone/CheesyPeesy Fork";
 $City::isGitBuild = !isFile("Add-Ons/GameMode_CityRPG4/README.md");
 
 $City::VersionWarning = "!!!!! WARNING: You are using save data from a different version of CityRPG. You are likely to encounter compatibility issues. To fix this, move or delete the save file located in your Blockland folder:" SPC $City::SavePath;
@@ -149,18 +149,18 @@ else
 
   // Brick_Checkpoint (Optional)
   // If enabled, we would like checkpoints to execute first.
-  if($AddOn__Brick_Checkpoint)
-  {
-    %error = ForceRequiredAddOn("Brick_Checkpoint");
-    
-    if(%error == $Error::None)
-    {
-      $City::CheckpointIsActive = 1;
-      deactivatepackage(CheckpointPackage);
-      // We don't want the checkpoint package loading.
-      // The necessary functions will be rewritten later to fix spawn compatibility.
-    }
-  }
+//  if($AddOn__Brick_Checkpoint)
+//  {
+//    %error = ForceRequiredAddOn("Brick_Checkpoint");
+//    
+//    if(%error == $Error::None)
+//    {
+//      $City::CheckpointIsActive = 1;
+//      deactivatepackage(CheckpointPackage);
+//      // We don't want the checkpoint package loading.
+//      // The necessary functions will be rewritten later to fix spawn compatibility.
+//    }
+//  }
 
   // Event_doPlayerTeleport (Optional)
   // If doPlayerTeleport is enabled, re-register it without the "relative" option.
@@ -301,11 +301,18 @@ addExtraResource($City::DataPath @ "ui/location.png");
 addExtraResource($City::DataPath @ "ui/time.png");
 addExtraResource($City::DataPath @ "ui/hunger.png");
 
-addExtraResource($City::DataPath @ "ui/healthy.png>");
-addExtraResource($City::DataPath @ "ui/hurt.png>");
-addExtraResource($City::DataPath @ "ui/injured.png>");
-addExtraResource($City::DataPath @ "ui/dying.png>");
-addExtraResource($City::DataPath @ "ui/dead.png>");
+//Custom Icons
+addExtraResource($City::DataPath @ "ui/healthy.png");
+addExtraResource($City::DataPath @ "ui/hurt.png");
+addExtraResource($City::DataPath @ "ui/injured.png");
+addExtraResource($City::DataPath @ "ui/dying.png");
+addExtraResource($City::DataPath @ "ui/dead.png");
+
+addExtraResource($City::DataPath @ "ui/rich.png");
+addExtraResource($City::DataPath @ "ui/wealthy.png");
+addExtraResource($City::DataPath @ "ui/middleclass.png");
+addExtraResource($City::DataPath @ "ui/poor.png");
+addExtraResource($City::DataPath @ "ui/broke.png");
 
 
 

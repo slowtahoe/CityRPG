@@ -78,7 +78,12 @@ function CityMenu_Lot(%client, %input)
 	}
 
 	// ## Initial display ## //
-	%price = $Pref::Server::City::lotCost[%lotBrick.dataBlock.getName()];
+	%sume = $City::Economics::Condition / 100;
+	%osum = $Pref::Server::City::lotCost[%lotBrick.dataBlock.getName()];
+	%sum = (%osum * %sume) + %osum;
+	%price = mFloor(%sum);
+
+	//%price = $Pref::Server::City::lotCost[%lotBrick.dataBlock.getName()];
 
 	if(%lotBrick.getCityLotID() == -1)
 	{
@@ -162,7 +167,12 @@ function CityMenu_LotPurchasePrompt(%client)
 
 	%client.cityLog("Lot " @ %lotBrick.getCityLotID() @ " purchase prompt");
 
-	%price = $Pref::Server::City::lotCost[%lotBrick.dataBlock.getName()];
+	%sume = $City::Economics::Condition / 100;
+	%osum = $Pref::Server::City::lotCost[%lotBrick.dataBlock.getName()];
+	%sum = (%osum * %sume) + %osum;
+	%price = mFloor(%sum);
+
+	//%price = $Pref::Server::City::lotCost[%lotBrick.dataBlock.getName()];
 
 	if(City.get(%client.bl_id, "money") < %price)
 	{
